@@ -42,6 +42,7 @@ jobs:
           cp rfvp-build/apply_text_patch.py rfvp/
           cp rfvp-build/apply_android_log_patch.py rfvp/
           cp rfvp-build/apply_movie_patch.py rfvp/
+          cp rfvp-build/apply_wmv_mp4_patch.py rfvp/
           cp rfvp-build/apply_audio_fix_patch.py rfvp/
           cp rfvp-build/apply_wmv_decoder_patch.py rfvp/
           cp rfvp-build/apply_text_click_patch.py rfvp/
