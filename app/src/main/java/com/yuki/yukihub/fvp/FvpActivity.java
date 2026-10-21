@@ -171,6 +171,9 @@ public final class FvpActivity extends Activity implements
             finish();
             return;
         }
+        // 后台把 WMV/ASF 预转成 MP4（v2video 内核，MediaCodec 硬编）。
+        // 不阻塞开局：转完之前引擎退回原生 WMV 路径，转完之后走缓存里的 MP4。
+        WmvTranscoder.start(gameRoot);
         nls = intent.getStringExtra(EXTRA_NLS);
         textHidpi = intent.getBooleanExtra(EXTRA_TEXT_HIDPI, true);
         systemFont = intent.getBooleanExtra(EXTRA_SYSTEM_FONT, true);
@@ -532,6 +535,7 @@ public final class FvpActivity extends Activity implements
     }
 
     private void destroyEngine() {
+        WmvTranscoder.stop();
         if (handle != 0L) {
             try { NativeRfvp.destroy(handle); } catch (Throwable ignored) { }
             handle = 0L;
